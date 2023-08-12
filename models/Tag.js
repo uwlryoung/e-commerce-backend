@@ -13,7 +13,7 @@ Tag.init(
       autoIncrement: true
     },
     tagName: {
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING
     }
   },
   {
