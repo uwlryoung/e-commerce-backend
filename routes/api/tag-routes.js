@@ -8,8 +8,10 @@ router.get('/', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const tagData = await Tag.findAll({
+      include: [{model: Product}]
       // include: [{model: Product},{model: ProductTag}]
-      include: [{model: Product, through: ProductTag, as: 'products'}]
+      // include: [{model: Product, through: 'product_tag'}]
+      // include: [{model: Product, through: ProductTag, as: 'products'}]
       // include: [{model: ProductTag, through: Product, as: 'products'}]
     });
     res.status(200).json(tagData);
@@ -23,8 +25,10 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Product data
   try {
     const tagData = await Tag.findByPk({
+      include: [{model: Product}]
       // include: [{model: Product},{model: ProductTag}]
-      include: [{model: Product, through: ProductTag, as: 'products'}]
+      // include: [{model: Product, through: 'product_tag'}]
+      // include: [{model: Product, through: ProductTag, as: 'products'}]
       // include: [{model: ProductTag, through: Product, as: 'products'}]
     }); 
     res.status(200).json(tagData);
@@ -47,7 +51,7 @@ router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
   Tag.update(
     {
-      tagName: req.body.tagName
+      tag_name: req.body.tag_name
     },
     {
       where: {

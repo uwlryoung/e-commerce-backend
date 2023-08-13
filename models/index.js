@@ -7,27 +7,27 @@ const ProductTag = require('./ProductTag');
 // Products belongsTo Category
 // Maybe have to set onDelete: NULL here, but says it's default...
 Category.hasOne(Product, {
-  foreignKey: 'categoryId',
+  foreignKey: 'category_id',
 });
 
 Product.belongsTo(Category, {
-  foreignKey: 'categoryId',
+  foreignKey: 'category_id',
 });
 
 // Categories have many Products
 Category.hasMany(Product, {
-  foreignKey: 'categoryId'
+  foreignKey: 'category_id'
 });
 
 Product.belongsTo(Category, {
-  foreignKey: 'categoryId'
+  foreignKey: 'category_id'
 });
 
 // Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(Tag, {through: 'ProductTag'});
+Product.belongsToMany(Tag, {through: 'product_tag'});
 
 // Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(Product, {through: 'ProductTag'});
+Tag.belongsToMany(Product, {through: 'product_tag'});
 
 module.exports = {
   Product,

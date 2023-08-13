@@ -50,7 +50,7 @@ router.put('/:id', (req, res) => {
   // update a category by its `id` value
   Category.update(
     {
-      categoryName: req.body.categoryName
+      category_name: req.body.category_name
     },
     {
       where: {
