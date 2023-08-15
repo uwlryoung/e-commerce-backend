@@ -16,8 +16,6 @@ router.get('/', async (req, res) => {
 
 // Gets one product by its 'id'
 router.get('/:id', async (req, res) => {
-  // find a single product by its `id`
-  // be sure to include its associated Category and Tag data
   try {
     const productData = await Product.findByPk(req.params.id, {
       include: [{model: Category}, {model: Tag}]
@@ -54,7 +52,6 @@ router.post('/', (req, res) => {
 
 // Updates a product by its 'id'
 router.put('/:id', (req, res) => {
-  // update product data
   Product.update(req.body, {
     where: {
       id: req.params.id,
@@ -63,7 +60,7 @@ router.put('/:id', (req, res) => {
     .then((product) => {
       if (req.body.tagIds && req.body.tagIds.length) {
         
-        ProductTag.findAll({
+        ProductTag.findAll({ 
           where: { product_id: req.params.id }
         }).then((productTags) => {
           // create filtered list of new tag_ids
@@ -99,7 +96,6 @@ router.put('/:id', (req, res) => {
 
 // Deletes a product by its 'id'
 router.delete('/:id', (req, res) => {
-  // delete one product by its `id` value
   Product.destroy({
     where: {
       id: req.params.id,

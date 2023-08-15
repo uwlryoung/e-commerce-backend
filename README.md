@@ -50,10 +50,10 @@ The database is now ready to use.
 
         Product Example
         {
-	      "product_name": "Basketball",
-	      "price": 200.00,
-	      "stock": 3,
-	      "tagIds": [1, 2, 3, 4]
+          "product_name": "Basketball",
+          "price": 200.00,"stock": 3,
+          "category_id": 3,
+          "tagIds": [1, 2, 3, 4]
         }
 
         Tag Example
@@ -63,11 +63,17 @@ The database is now ready to use.
      ### PUT
      Use the URL base: http://localhost:3001/api/. Follow this with either `/categories/id`, `/products/id`, `/tags/id` depending on which item you want to update. (`id` is the id number of the item you would like to update) Use JSON text to add to the body of the request. This is the same as POST requests, see above. (e.g.: `/categories/2` and with the proper JSON body input will update the category with an id of '2').
      ### DELETE
-    Use the URL base: http://localhost:3001/api/. Follow this with either `/categories/id`, `/products/id`, `/tags/id` depending on which item you want to delete. (`id` is the id number of the item you would like to delete). (e.g.: `/categories/2` will delete the category with an id of '2').
+    Use the URL base: http://localhost:3001/api/. Follow this with either `/categories/id`, `/products/id`, `/tags/id` depending on which item you want to delete. (`id` is the id number of the item you would like to delete). (e.g.: `/categories/2` will delete the category with an id of '2'). **Warning: When deleting a category, it will delete any associated products, as well.**
 
+See here for a [Video demonstration](https://drive.google.com/file/d/1IrBR1yG-053EQMjteomi-REJZyBZqrUE/view?usp=sharing).
 
-Example using Insomnia: 
+Example of a GET CATEGORIES request using Insomnia: 
 ![Get Categories Request](/assets/API-Requests.png)
+
+Example of a PUT PRODUCT (update) request using Insomnia: 
+![Get Categories Request](/assets/API-UPDATE.png)
+
+All of the other requests are done similarly just by changing the URL in the API interface. See the above instructions about what to insert as URLs for the different types of requests.
       
 
   ## Credits
